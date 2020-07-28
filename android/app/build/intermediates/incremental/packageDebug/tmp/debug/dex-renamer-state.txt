@@ -1,4 +1,4 @@
-#Mon Jul 27 15:45:35 CEST 2020
+#Tue Jul 28 14:43:57 CEST 2020
 base.0=/home/johanle-nagardepitecheu/Documents/react_native_app/repo/ShoppyApp/android/app/build/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
