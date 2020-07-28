@@ -29,8 +29,18 @@ export default class MyHeader extends Component
 
     async componentDidMount() {
         let data = await Storage.getItems()
-        this.setState({nbItem: data.nbItem})
-        console.log("Hello", data)
+        if (!data)
+            this.setState({nbItem: 0})
+        else
+            this.setState({nbItem: data.nbItem})
+    }
+
+    async componentDidUpdate() {
+        let data = await Storage.getItems()
+        if (!data)
+            this.setState({nbItem: 0})
+        else
+            this.setState({nbItem: data.nbItem})
     }
 
     render () {

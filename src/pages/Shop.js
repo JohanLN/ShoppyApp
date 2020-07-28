@@ -26,42 +26,42 @@ export default class Shop extends Component
                 {
                     id: 1,
                     title: 'shirt1',
-                    price: '15$',
+                    price: 15,
                     link: "https://cdn.pixabay.com/photo/2015/03/26/09/41/tie-690084_960_720.jpg",
                     filter: 0
                 },
                 {
                     id: 2,
                     title: 'shirt2',
-                    price: '9.95$',
+                    price: 9.95,
                     link: "https://cdn.pixabay.com/photo/2015/03/26/09/41/tie-690084_960_720.jpg",
                     filter: 0
                 },
                 {
                     id: 3,
                     title: 'pant1',
-                    price: '20.99$',
+                    price: 20.99,
                     link: "https://cdn.pixabay.com/photo/2015/03/26/09/41/tie-690084_960_720.jpg",
                     filter: 1
                 },
                 {
                     id: 4,
                     title: 'pant2',
-                    price: '34.84$',
+                    price: 34.84,
                     link: "https://cdn.pixabay.com/photo/2015/03/26/09/41/tie-690084_960_720.jpg",
                     filter: 1
                 },
                 {
                     id: 5,
                     title: 'shoes1',
-                    price: '71.96$',
+                    price: 71.96,
                     link: "https://cdn.pixabay.com/photo/2015/03/26/09/41/tie-690084_960_720.jpg",
                     filter: 2
                 },
                 {
                     id: 6,
                     title: 'shoes2',
-                    price: '35.35$',
+                    price: 35.35,
                     link: "https://cdn.pixabay.com/photo/2015/03/26/09/41/tie-690084_960_720.jpg",
                     filter: 2
                 },
@@ -127,7 +127,7 @@ export default class Shop extends Component
         }
         this.setState({filter: newFilter})
     }
-
+    
     render () {
         return (
             <View>

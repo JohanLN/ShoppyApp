@@ -12,7 +12,7 @@ export default class Payement extends Component
             payement: true,
             creditCard: "",
             validity: "",
-            cvv: ""
+            cvv: "",
         }
     }
 
@@ -21,10 +21,11 @@ export default class Payement extends Component
         this.props.payement(this.state.payement)
     }
 
+    
     render () {
         return (
             <View style={{width: 300}}>
-                <Text style={{textAlign: 'center', fontSize: 35, marginTop: 20}}>Total = 0 $</Text>
+                <Text style={{textAlign: 'center', fontSize: 35, marginTop: 20}}>Total = {this.props.total} $</Text>
                 <View style={styles.inputContainer}>
                     <Input 
                             placeholder="Credit card"

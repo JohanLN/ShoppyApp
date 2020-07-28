@@ -17,7 +17,7 @@ export default class AddElement extends Component
         const array = []
         array.push(this.props.element)
 
-        await Storage.saveItems(array)
+        await Storage.saveItem(array)
         this.displayAdd()
     }
 
