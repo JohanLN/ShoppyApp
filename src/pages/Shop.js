@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Image, TouchableOpacity, ScrollView, FlatList, RefreshControl } from 'react-native'
+import { View, Text, Image, TouchableOpacity, ScrollView, FlatList } from 'react-native'
 import MyHeader from '../components/MyHeader'
 import Menu from '../components/Menu'
 import Cart from '../components/Cart'
@@ -18,7 +18,6 @@ export default class Shop extends Component
             pant: true,
             shoes: true,
             add: false,
-            refresh: false,
             selected: {},
             filter: [0, 1, 2],
             items: 
@@ -92,7 +91,7 @@ export default class Shop extends Component
             <View>
                 <TouchableOpacity disabled={this.state.menu} onPress={() => this.displayAdd({item, status: true})}>
                     {this.state.filter[0] == item.filter || this.state.filter[1] == item.filter || this.state.filter[2] == item.filter ? (
-                        <Text style={{fontSize: 20, textAlign:'center', marginTop: 30, marginBottom: 10}}>{item.title}  {item.price}</Text>
+                        <Text style={{fontSize: 20, textAlign:'center', marginTop: 30, marginBottom: 10}}>{item.title}  {item.price} $</Text>
                     ): null}
                     {this.state.filter[0] == item.filter || this.state.filter[1] == item.filter || this.state.filter[2] == item.filter ? (
                         <Image
@@ -131,11 +130,9 @@ export default class Shop extends Component
     render () {
         return (
             <View>
-                <MyHeader menu={this.displayMenu.bind(this)} cart={this.displayCart.bind(this)} />
+                <MyHeader menu={this.displayMenu.bind(this)} cart={this.displayCart.bind(this)}/>
                 <TouchableOpacity style={{height: "100%", paddingBottom: 200}}  disabled={!this.state.menu} onPress={() => {this.setState({menu: false, cart: false})}}>
-                    <ScrollView
-                        refreshControl={<RefreshControl refreshing={this.state.refresh} />}
-                    >
+                    <ScrollView>
                         <FlatList 
                             data={this.state.items}
                             keyExtractor={(item) => item.id}
@@ -144,12 +141,12 @@ export default class Shop extends Component
                     </ScrollView>
                 </TouchableOpacity>
                 {this.state.menu ? (
-                    <Menu />
+                    <Menu nav={this.props.navigation} initialRoute="Shop" displayMenu={this.displayMenu.bind(this)} />
                 ) : null}
                 {this.state.cart ? (
                     <Cart cart={this.displayCart.bind(this)} />
                 ) : null}
-                <SearchingTool filter={this.filter.bind(this)} />
+                <SearchingTool filter={this.filter.bind(this)} menu={this.state.menu} displayMenu={this.displayMenu.bind(this)}/>
                 {this.state.add ? (
                     <AddElement displayAdd={this.displayAdd.bind(this)} element={this.state.selected} />
                 ) : null}

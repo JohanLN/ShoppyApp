@@ -26,6 +26,7 @@ export default class SearchingTool extends Component
         this.props.filter(item)
     }
 
+
     render () {
         return (
             <View style={{position: 'absolute', top: 650, left: 280}}>
@@ -38,7 +39,11 @@ export default class SearchingTool extends Component
                             color="white"
                         />
                     }
-                    onPress={() => this.setState({display: !this.state.display})}
+                    onPress={() => {
+                        if(this.props.menu)
+                            this.props.displayMenu(!this.props.menu)
+                        this.setState({display: !this.state.display})
+                    }}
                 />
                 <Overlay
                     isVisible={this.state.display}

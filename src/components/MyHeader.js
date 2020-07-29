@@ -23,6 +23,8 @@ export default class MyHeader extends Component
     }
 
     displayCart() {
+        if(this.state.menu)
+            this.displayMenu()
         this.setState({cart: !this.state.cart})
         this.props.cart(this.state.cart)
     }
@@ -72,7 +74,10 @@ export default class MyHeader extends Component
                                 />
                             }
                             title={"  " + this.state.nbItem.toString()}
-                            onPress={() => this.displayCart()}
+                            onPress={
+
+                                () => this.displayCart()
+                            }
                             buttonStyle={{color: 'white'}}
                         />
                     }

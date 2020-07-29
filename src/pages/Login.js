@@ -24,7 +24,11 @@ export default class Login extends Component
                     <SignUp nav={this.props.navigation}/>
                 }
                 <TouchableOpacity onPress={() => {this.setState({create: !this.state.create})}}>
-                    <Text style={{marginTop: 40, color: 'white', fontSize: 20, fontWeight: 'bold', textAlign: 'center'}}>SignUp !</Text>
+                {!this.state.create ? (
+                    <Text style={{marginTop: 40, color: 'white', fontSize: 20, fontWeight: 'bold', textAlign: 'center'}}>No account yet ? Create one here !</Text>
+                ) :
+                    <Text style={{marginTop: 40, color: 'white', fontSize: 20, fontWeight: 'bold', textAlign: 'center'}}>Already an account ? Login here !</Text>
+                }
                 </TouchableOpacity>
             </LinearGradient>
         )

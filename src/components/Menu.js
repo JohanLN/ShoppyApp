@@ -6,6 +6,11 @@ import Icon from 'react-native-vector-icons/AntDesign'
 
 export default class Menu extends Component
 {
+
+    logout() {
+        this.props.nav.navigate("Login")
+    }
+
     render () {
         return (
             <View style={styles.menuContainer}>
@@ -18,18 +23,21 @@ export default class Menu extends Component
                             color="white"
                         />
                     }
-                    onPress={() => {}}
+                    onPress={() => {
+                        this.props.displayMenu(false)
+                        this.props.nav.navigate("Account", {initialRoute: this.props.initialRoute})
+                    }}
                 />
                 <Button 
                     buttonStyle={styles.button}
                     icon={
                         <Icon 
-                            name="setting"
+                            name="logout"
                             size={25}
                             color="white"
                         />
                     }
-                    onPress={() => {}}
+                    onPress={() => this.logout()}
                 />
             </View>
         )

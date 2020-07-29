@@ -28,16 +28,25 @@ export default class Market extends Component
         return (
             <View>
                 <MyHeader menu={this.displayMenu.bind(this)} cart={this.displayCart.bind(this)} />
-                <Text style={styles.title}>Welcome to the ShoppApp market !</Text>
-                <TouchableOpacity onPress={() => {this.setState({menu: false, cart: false})}}>
+                <TouchableOpacity disabled={!this.state.menu} onPress={() => {this.setState({menu: false, cart: false})}}>
+                    <Text style={styles.title}>Welcome to the ShoppApp market !</Text>
+                </TouchableOpacity>
+
                     <ScrollView>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Shop")}>
-                            <Teaser />
+                        <TouchableOpacity style={{height:"100%", paddingBottom: 250}} disabled={!this.state.menu} onPress={() => {this.setState({menu: false, cart: false})}}>
+                            <TouchableOpacity disabled={this.state.menu} onPress={() => this.props.navigation.navigate("Shop")}>
+                                <Teaser id="Mixed" />
+                            </TouchableOpacity>
+                            <TouchableOpacity disabled={this.state.menu} onPress={() => this.props.navigation.navigate("Shop")}>
+                                <Teaser id="Women" />
+                            </TouchableOpacity>
+                            <TouchableOpacity disabled={this.state.menu} onPress={() => this.props.navigation.navigate("Shop")}>
+                                <Teaser id="Men" />
+                            </TouchableOpacity>
                         </TouchableOpacity>
                     </ScrollView>
-                </TouchableOpacity>
                 {this.state.menu ? (
-                    <Menu />
+                    <Menu nav={this.props.navigation} initialRoute="Market" displayMenu={this.displayMenu.bind(this)} />
                 ) : null}
                 {this.state.cart ? (
                     <Cart cart={this.displayCart.bind(this)} />
